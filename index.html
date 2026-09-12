@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>諸墨閃果</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
@@ -11,20 +12,39 @@
 :root{
 --void:#070506;--deep:#110d0f;--dust:#1a1214;
 --gold:#c9a84c;--gold-dim:#8a6f2e;--gold-pale:#f0dfa0;
---crimson:#6b1a2a;--text:#e8ddd0;--muted:#9a8a7a;--muted2:#5a4a42;
+--rose:#d97a94;
+--text:#e8ddd0;--muted:#ab9c8b;--muted-light:#c2b6a6;
 --serif-jp:'Shippori Mincho',serif;--serif-en:'IM Fell English',serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--void);color:var(--text);font-family:var(--serif-jp);overflow-x:hidden;line-height:1.7}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+body{background:var(--void);color:var(--text);font-family:var(--serif-jp);overflow-x:hidden;line-height:1.75;font-size:16px}
 
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;
+}
+
+.skip-link{
+  position:absolute;top:-100px;left:1rem;z-index:200;
+  background:var(--gold);color:var(--void);
+  padding:.7rem 1.2rem;font-size:.85rem;letter-spacing:.1em;
+  text-decoration:none;transition:top .2s;
+}
+.skip-link:focus{top:1rem}
+
+/* ── NAV ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:linear-gradient(to bottom,rgba(7,5,6,.97) 60%,rgba(7,5,6,0))}
 .nav-brand{font-family:var(--serif-jp);font-size:.95rem;font-weight:500;letter-spacing:.45em;color:var(--gold);text-decoration:none}
 .nav-menu{display:flex;gap:2rem;list-style:none}
-.nav-menu a{font-size:.68rem;letter-spacing:.25em;color:var(--muted);text-decoration:none;transition:color .3s}
+.nav-menu a{font-size:.85rem;letter-spacing:.2em;color:var(--muted);text-decoration:none;transition:color .3s;padding:.4rem .2rem}
 .nav-menu a:hover{color:var(--gold)}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-ham span{display:block;width:22px;height:1px;background:var(--muted);transition:all .3s}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--muted);transition:all .3s}
 
+/* ── HERO ── */
 .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 75% at 50% 42%,rgba(107,26,42,.18) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 78% 22%,rgba(201,168,76,.06) 0%,transparent 60%),var(--void)}
 .hero-rule-v{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent 5%,rgba(201,168,76,.18) 30%,rgba(201,168,76,.18) 70%,transparent 95%);pointer-events:none}
@@ -38,91 +58,108 @@ body{background:var(--void);color:var(--text);font-family:var(--serif-jp);overfl
 .hero-content{position:relative;z-index:2;padding:0 1rem}
 .hero-logo{width:110px;height:110px;margin:0 auto 2.5rem;opacity:.88}
 .hero-logo img{width:100%;height:100%;object-fit:contain}
-.hero-eyebrow{font-family:var(--serif-en);font-style:italic;font-size:.78rem;letter-spacing:.35em;color:var(--gold-dim);margin-bottom:2rem}
+.hero-eyebrow{font-family:var(--serif-en);font-style:italic;font-size:.85rem;letter-spacing:.35em;color:var(--gold);margin-bottom:2rem}
 .hero-name-ja{font-family:var(--serif-jp);font-weight:300;font-size:clamp(2.8rem,9vw,5.5rem);letter-spacing:.65em;color:var(--text);line-height:1;display:block}
-.hero-name-furigana{display:block;font-size:.65rem;letter-spacing:.55em;color:var(--muted2);margin-top:.55rem}
-.hero-name-en{font-family:var(--serif-en);font-style:italic;font-size:clamp(.85rem,2vw,1.15rem);letter-spacing:.2em;color:var(--gold);display:block;margin-top:.8rem;margin-bottom:3.8rem}
+.hero-name-furigana{display:block;font-size:.75rem;letter-spacing:.5em;color:var(--muted-light);margin-top:.6rem}
+.hero-name-en{font-family:var(--serif-en);font-style:italic;font-size:clamp(.9rem,2vw,1.15rem);letter-spacing:.2em;color:var(--gold);display:block;margin-top:.8rem;margin-bottom:3.8rem}
 
 .hero-nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.2);width:clamp(280px,58vw,640px);margin:0 auto 3rem}
-.hero-nav-item{background:rgba(7,5,6,.96);padding:1.2rem .8rem;text-align:center;cursor:pointer;transition:background .3s;text-decoration:none;display:block}
+.hero-nav-item{background:rgba(7,5,6,.96);padding:1.2rem .8rem;text-align:center;cursor:pointer;transition:background .3s;text-decoration:none;display:block;min-height:44px}
 .hero-nav-item:hover{background:rgba(201,168,76,.06)}
-.hero-nav-item .num{display:block;font-family:var(--serif-en);font-style:italic;font-size:.62rem;letter-spacing:.3em;color:var(--gold-dim);margin-bottom:.45rem}
-.hero-nav-item .lbl{display:block;font-size:.7rem;letter-spacing:.22em;color:var(--text)}
-.hero-nav-item .lbl-sub{display:block;font-size:.57rem;letter-spacing:.15em;color:var(--muted2);margin-top:.18rem}
+.hero-nav-item .num{display:block;font-family:var(--serif-en);font-style:italic;font-size:.85rem;letter-spacing:.25em;color:var(--gold);margin-bottom:.45rem}
+.hero-nav-item .lbl{display:block;font-size:.85rem;letter-spacing:.18em;color:var(--text)}
+.hero-nav-item .lbl-sub{display:block;font-size:.7rem;letter-spacing:.12em;color:var(--muted-light);margin-top:.2rem}
 
 .hero-sns{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
-.sns-link{font-family:var(--serif-en);font-style:italic;font-size:.68rem;letter-spacing:.2em;color:var(--muted);text-decoration:none;padding:.4rem 1.1rem;border:1px solid rgba(201,168,76,.15);transition:all .3s}
+.sns-link{font-family:var(--serif-en);font-style:italic;font-size:.8rem;letter-spacing:.18em;color:var(--muted);text-decoration:none;padding:.5rem 1.1rem;border:1px solid rgba(201,168,76,.15);transition:all .3s;min-height:44px;display:inline-flex;align-items:center}
 .sns-link:hover{color:var(--gold);border-color:rgba(201,168,76,.4)}
 
 .hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(201,168,76,.4),transparent)}
-.scroll-text{font-size:.58rem;letter-spacing:.35em;color:var(--gold-dim)}
+.scroll-text{font-size:.75rem;letter-spacing:.3em;color:var(--gold)}
 
+/* ── SECTIONS ── */
 .section{padding:7rem 2.5rem 6rem;position:relative;border-top:1px solid rgba(201,168,76,.1)}
 .section-label{display:flex;align-items:flex-end;gap:1.2rem;margin-bottom:4rem}
-.section-num{font-family:var(--serif-en);font-style:italic;font-size:4.5rem;font-weight:400;color:rgba(201,168,76,.07);line-height:1}
-.section-title{font-size:.68rem;letter-spacing:.42em;color:var(--gold-dim);padding-bottom:.3rem}
+.section-num{font-family:var(--serif-en);font-style:italic;font-size:4.5rem;font-weight:400;color:rgba(201,168,76,.08);line-height:1}
+.section-title{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:500;letter-spacing:.3em;color:var(--gold);padding-bottom:.3rem}
 
 /* PROFILE */
 .profile-grid{display:grid;grid-template-columns:200px 1fr;gap:5rem;align-items:start;max-width:860px;margin:0 auto}
 .profile-portrait{aspect-ratio:3/4;background:var(--dust);border:1px solid rgba(201,168,76,.2);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.profile-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;mix-blend-mode:luminosity;opacity:.82}
+.profile-portrait img{width:100%;height:100%;object-fit:contain;padding:1.6rem}
 .profile-body h2{font-family:var(--serif-jp);font-weight:400;font-size:1.4rem;letter-spacing:.4em;color:var(--text);margin-bottom:.25rem}
-.profile-furigana{font-size:.62rem;letter-spacing:.48em;color:var(--muted2);display:block;margin-bottom:1.6rem}
+.profile-furigana{font-size:.75rem;letter-spacing:.45em;color:var(--muted-light);display:block;margin-bottom:1.6rem}
 .profile-divider{height:1px;background:rgba(201,168,76,.2);margin-bottom:1.8rem}
-.profile-body p{font-size:.88rem;line-height:2.5;color:var(--muted);margin-bottom:1.2rem}
+.profile-body p{font-size:1rem;line-height:2.2;color:var(--muted);margin-bottom:1.2rem}
 .profile-list{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:.6rem}
-.profile-list li{display:flex;gap:1.8rem;font-size:.76rem;padding:.5rem 0;border-bottom:1px solid rgba(201,168,76,.08)}
-.profile-key{color:var(--gold-dim);letter-spacing:.2em;min-width:72px}
+.profile-list li{display:flex;gap:1.8rem;font-size:.9rem;padding:.6rem 0;border-bottom:1px solid rgba(201,168,76,.08)}
+.profile-key{color:var(--gold);letter-spacing:.18em;min-width:80px;flex-shrink:0}
 .profile-val{color:var(--muted)}
 .profile-contact{margin-top:1.6rem;display:flex;flex-direction:column;gap:.5rem}
-.profile-contact a{font-size:.75rem;letter-spacing:.12em;color:var(--muted);text-decoration:none;transition:color .3s}
+.profile-contact a{font-size:.9rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;transition:color .3s;padding:.3rem 0}
 .profile-contact a:hover{color:var(--gold)}
 
 /* AWARD */
 .award-inner{max-width:740px;margin:0 auto}
-.award-contest{font-family:var(--serif-en);font-style:italic;font-size:.68rem;letter-spacing:.35em;color:var(--gold);margin-bottom:.5rem}
-.award-contest-ja{font-size:.7rem;letter-spacing:.22em;color:var(--muted2);margin-bottom:2.5rem}
-.award-title{font-size:clamp(2rem,5.5vw,3.2rem);font-weight:500;letter-spacing:.42em;color:var(--text);line-height:1.2;margin-bottom:.35rem}
-.award-ruby{font-size:.62rem;letter-spacing:.5em;color:var(--muted2);display:block;margin-bottom:2.5rem}
+.award-contest{font-family:var(--serif-en);font-style:italic;font-size:.8rem;letter-spacing:.3em;color:var(--gold);margin-bottom:.5rem}
+.award-contest-ja{font-size:.85rem;letter-spacing:.18em;color:var(--muted-light);margin-bottom:2.5rem}
+.award-title{font-size:clamp(1.7rem,3.8vw,2.3rem);font-weight:500;letter-spacing:.38em;color:var(--text);line-height:1.2;margin-bottom:.35rem}
+.award-ruby{font-size:.75rem;letter-spacing:.45em;color:var(--muted-light);display:block;margin-bottom:2.5rem}
 .award-divider{width:36px;height:1px;background:rgba(201,168,76,.4);margin-bottom:2.5rem}
-.award-synopsis{font-size:.86rem;line-height:2.5;color:var(--muted);border-left:2px solid rgba(201,168,76,.3);padding-left:1.6rem;font-style:italic}
+.award-synopsis{font-size:1rem;line-height:2.3;color:var(--muted);border-left:2px solid rgba(201,168,76,.3);padding-left:1.6rem;font-style:italic}
 .award-badge-wrap{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.award-badge{font-size:.63rem;letter-spacing:.3em;color:var(--gold-dim);border:1px solid rgba(201,168,76,.25);padding:.45rem 1.4rem;text-decoration:none;transition:all .3s}
-.award-badge:hover{color:var(--gold);border-color:rgba(201,168,76,.5)}
+.award-badge{font-size:.8rem;letter-spacing:.25em;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.55rem 1.4rem;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;min-height:44px}
+.award-badge:hover{color:var(--gold-pale);border-color:rgba(201,168,76,.6)}
 
 /* WORKS GRID */
 .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.12);max-width:960px;margin:0 auto}
 .work-card{background:var(--void);padding:2.2rem 1.8rem;transition:background .3s;text-decoration:none;display:flex;flex-direction:column}
 .work-card:hover{background:rgba(201,168,76,.04)}
-.work-num{font-family:var(--serif-en);font-style:italic;font-size:.62rem;letter-spacing:.3em;color:var(--gold-dim);margin-bottom:1rem}
-.work-genre{font-size:.6rem;letter-spacing:.25em;color:var(--crimson);margin-bottom:.5rem}
-.work-title{font-size:.98rem;font-weight:500;letter-spacing:.24em;color:var(--text);margin-bottom:.8rem;line-height:1.6}
-.work-meta{font-size:.62rem;letter-spacing:.18em;color:var(--muted2);margin-bottom:.8rem}
-.work-desc{font-size:.7rem;line-height:2;color:var(--muted);flex:1}
-.work-link{display:inline-block;margin-top:1.4rem;font-size:.62rem;letter-spacing:.3em;color:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,.25);padding-bottom:.18rem;text-decoration:none;transition:color .3s}
-.work-link:hover{color:var(--gold)}
-.work-no-link{display:inline-block;margin-top:1.4rem;font-size:.62rem;letter-spacing:.2em;color:var(--muted2);font-style:italic}
+.work-num{font-family:var(--serif-en);font-style:italic;font-size:.85rem;letter-spacing:.25em;color:var(--gold);margin-bottom:1rem}
+.work-genre{font-size:.78rem;letter-spacing:.18em;color:var(--rose);margin-bottom:.5rem}
+.work-title{font-size:1.05rem;font-weight:500;letter-spacing:.2em;color:var(--text);margin-bottom:.8rem;line-height:1.6}
+.work-meta{font-size:.8rem;letter-spacing:.1em;color:var(--muted-light);margin-bottom:.8rem}
+.work-desc{font-size:.88rem;line-height:1.95;color:var(--muted);flex:1}
+.work-link{display:inline-block;margin-top:1.4rem;font-size:.78rem;letter-spacing:.22em;color:var(--gold);border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:.2rem;text-decoration:none;transition:color .3s}
+.work-link:hover{color:var(--gold-pale)}
+.work-card.work-card-outbound{align-items:flex-start;justify-content:center}
+.work-card-outbound .work-title{font-size:1rem}
+.work-status{
+  display:inline-block;font-size:.7rem;letter-spacing:.15em;color:var(--gold);
+  border:1px solid rgba(201,168,76,.3);padding:.2rem .7rem;margin-bottom:.9rem;
+}
+.subgroup-label{
+  font-size:.75rem;letter-spacing:.3em;color:var(--muted-light);
+  margin:3rem 0 1.2rem;max-width:960px;margin-left:auto;margin-right:auto;
+  padding-left:.2rem;
+}
+.subgroup-label:first-of-type{margin-top:0}
+.subgroup-empty{
+  max-width:960px;margin:0 auto;padding:2rem 1.8rem;
+  border:1px dashed rgba(201,168,76,.2);
+  font-size:.85rem;color:var(--muted);letter-spacing:.05em;
+}
 
 /* STORE */
 .store-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:1rem}
 .store-emblem{width:108px;height:108px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:2.8rem;position:relative;flex-shrink:0}
 .store-emblem::before{content:'';position:absolute;width:96px;height:96px;border:1px solid rgba(201,168,76,.1);border-radius:50%}
-.store-emblem-text{font-family:var(--serif-en);font-style:italic;font-size:.62rem;letter-spacing:.3em;color:var(--gold-dim)}
-.store-coming{font-family:var(--serif-en);font-style:italic;font-size:2.3rem;color:rgba(201,168,76,.28);letter-spacing:.1em;margin-bottom:1.4rem}
-.store-desc{font-size:.78rem;letter-spacing:.22em;line-height:2.6;color:var(--muted);max-width:460px}
+.store-emblem-text{font-family:var(--serif-en);font-style:italic;font-size:.78rem;letter-spacing:.25em;color:var(--gold)}
+.store-coming{font-family:var(--serif-en);font-style:italic;font-size:2.3rem;color:rgba(201,168,76,.32);letter-spacing:.1em;margin-bottom:1.4rem}
+.store-desc{font-size:.95rem;letter-spacing:.14em;line-height:2.3;color:var(--muted);max-width:460px}
 .store-platforms{display:flex;gap:1.8rem;margin-top:2.8rem;flex-wrap:wrap;justify-content:center}
-.store-plat{font-size:.62rem;letter-spacing:.28em;color:var(--muted);padding:.55rem 1.6rem;border:1px solid rgba(201,168,76,.15)}
+.store-plat{font-size:.78rem;letter-spacing:.2em;color:var(--muted);padding:.6rem 1.6rem;border:1px solid rgba(201,168,76,.15)}
 
 footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align:center}
-.footer-name{font-family:var(--serif-jp);font-weight:300;font-size:.88rem;letter-spacing:.5em;color:var(--gold-dim);margin-bottom:.9rem}
-.footer-copy{font-family:var(--serif-en);font-style:italic;font-size:.62rem;letter-spacing:.15em;color:rgba(154,138,122,.38)}
+.footer-name{font-family:var(--serif-jp);font-weight:300;font-size:.9rem;letter-spacing:.5em;color:var(--gold);margin-bottom:.9rem}
+.footer-copy{font-family:var(--serif-en);font-style:italic;font-size:.75rem;letter-spacing:.12em;color:var(--muted)}
 
 @media(max-width:768px){
   .nav{padding:1rem 1.2rem}
   .nav-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,5,6,.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:99}
   .nav-menu.open{display:flex}
-  .nav-menu a{font-size:1rem;letter-spacing:.3em}
+  .nav-menu a{font-size:1.1rem;letter-spacing:.25em}
   .nav-ham{display:flex;z-index:100}
   .nav-ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
   .nav-ham.open span:nth-child(2){opacity:0}
@@ -138,34 +175,37 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
 @media(max-width:480px){
   .works-grid{grid-template-columns:1fr}
   .hero-nav-grid{grid-template-columns:repeat(2,1fr)}
+  body{font-size:15px}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
+<a href="#main" class="skip-link">本文へスキップ</a>
+
+<nav class="nav" id="nav" aria-label="サイト内ナビゲーション">
   <a class="nav-brand" href="#top">諸墨閃果</a>
   <ul class="nav-menu" id="nav-menu">
     <li><a href="#profile" onclick="closeMenu()">Profile</a></li>
-    <li><a href="#award" onclick="closeMenu()">受賞作</a></li>
     <li><a href="#novels" onclick="closeMenu()">小説</a></li>
     <li><a href="#criticism" onclick="closeMenu()">批評・Art</a></li>
+    <li><a href="#award" onclick="closeMenu()">受賞作</a></li>
     <li><a href="#store" onclick="closeMenu()">Store</a></li>
   </ul>
-  <div class="nav-ham" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <button class="nav-ham" id="hamburger" onclick="toggleMenu()" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav-menu">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+  </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="hero-rule-v"></div>
-  <div class="hero-rule-h"></div>
-  <div class="hero-corner tl"></div>
-  <div class="hero-corner tr"></div>
-  <div class="hero-corner bl"></div>
-  <div class="hero-corner br"></div>
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-rule-v" aria-hidden="true"></div>
+  <div class="hero-rule-h" aria-hidden="true"></div>
+  <div class="hero-corner tl" aria-hidden="true"></div>
+  <div class="hero-corner tr" aria-hidden="true"></div>
+  <div class="hero-corner bl" aria-hidden="true"></div>
+  <div class="hero-corner br" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-logo"><img src="logo.png" alt="諸墨閃果 ロゴ"></div>
     <p class="hero-eyebrow">Author</p>
@@ -174,44 +214,48 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
     <span class="hero-name-en">Morozumi Senka</span>
     <div class="hero-nav-grid">
       <a class="hero-nav-item" href="#profile"><span class="num">01</span><span class="lbl">Profile</span></a>
-      <a class="hero-nav-item" href="#award"><span class="num">02</span><span class="lbl">受賞作</span></a>
-      <a class="hero-nav-item" href="#novels"><span class="num">03</span><span class="lbl">小説</span></a>
-      <a class="hero-nav-item" href="#criticism"><span class="num">04</span><span class="lbl">批評・Art</span><span class="lbl-sub">&amp; other</span></a>
+      <a class="hero-nav-item" href="#novels"><span class="num">02</span><span class="lbl">小説</span></a>
+      <a class="hero-nav-item" href="#criticism"><span class="num">03</span><span class="lbl">批評・Art</span><span class="lbl-sub">&amp; other</span></a>
+      <a class="hero-nav-item" href="#award"><span class="num">04</span><span class="lbl">受賞作</span></a>
       <a class="hero-nav-item" href="#store"><span class="num">05</span><span class="lbl">Store</span></a>
       <a class="hero-nav-item" href="https://note.com/morozumi_senka" target="_blank" rel="noopener"><span class="num">Note</span><span class="lbl">→</span></a>
     </div>
     <div class="hero-sns">
       <a class="sns-link" href="https://note.com/morozumi_senka" target="_blank" rel="noopener">Note</a>
+      <a class="sns-link" href="https://kakuyomu.jp/my/antenna/works" target="_blank" rel="noopener">Kakuyomu</a>
       <a class="sns-link" href="https://x.com/MorozumiSenka" target="_blank" rel="noopener">X / Twitter</a>
       <a class="sns-link" href="https://bsky.app/profile/morozumi-senka.bsky.social" target="_blank" rel="noopener">Bluesky</a>
       <a class="sns-link" href="https://www.instagram.com/morozumi.senka/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
-  <div class="hero-scroll">
+  <div class="hero-scroll" aria-hidden="true">
     <span class="scroll-text">scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
+<main id="main">
+
 <!-- PROFILE -->
-<section class="section" id="profile">
+<section class="section" id="profile" aria-labelledby="profile-heading">
   <div class="section-label">
-    <span class="section-num">01</span>
-    <span class="section-title">Profile</span>
+    <span class="section-num" aria-hidden="true">01</span>
+    <h2 class="section-title" id="profile-heading">Profile</h2>
   </div>
   <div class="profile-grid">
     <div class="profile-portrait">
       <img src="logo.png" alt="諸墨閃果">
     </div>
     <div class="profile-body">
-      <h2>諸墨 閃果</h2>
+      <h3>諸墨 閃果</h3>
       <span class="profile-furigana">もろずみ　せんか</span>
       <div class="profile-divider"></div>
-      <p>2025年夏より活動開始。短編小説を主軸に執筆中。2026年は自己出版を中心に活動を予定しています。趣味でArt関連の雑記や軽い批評を書いたりしています。</p>
+      <p>道端のビニール袋に、猫と名付けて追い回す。<br>
+      時々我に返って、その一部始終を、文章にしている。<br>
+      概ねそのような作風で活動している。</p>
       <ul class="profile-list">
-        <li><span class="profile-key">活動媒体</span><span class="profile-val">Note / Kindle / 文芸誌</span></li>
+        <li><span class="profile-key">活動媒体</span><span class="profile-val">カクヨム / Note / Kindle / other</span></li>
         <li><span class="profile-key">ジャンル</span><span class="profile-val">小説・批評・Art・other</span></li>
-        <li><span class="profile-key">受賞</span><span class="profile-val">モノガタリー賞 受賞（2025）</span></li>
       </ul>
       <div class="profile-contact">
         <a href="mailto:morozumi.senka@gmail.com">✉ morozumi.senka@gmail.com</a>
@@ -223,11 +267,79 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
   </div>
 </section>
 
-<!-- AWARD -->
-<section class="section" id="award">
+<!-- 小説 -->
+<section class="section" id="novels" aria-labelledby="novels-heading">
   <div class="section-label">
-    <span class="section-num">02</span>
-    <span class="section-title">受賞作</span>
+    <span class="section-num" aria-hidden="true">02</span>
+    <h2 class="section-title" id="novels-heading">小説</h2>
+  </div>
+  <p class="subgroup-label">完結</p>
+  <div class="works-grid">
+    <a class="work-card" href="https://monogatary.com/story/531266" target="_blank" rel="noopener">
+      <div class="work-num">No.01</div>
+      <span class="work-status">完結</span>
+      <div class="work-genre">文芸・日常系</div>
+      <div class="work-title">オルター・エゴ</div>
+      <div class="work-meta">読了目安 10分</div>
+      <div class="work-desc">深夜零時四十七分。熱々の小籠包と、「今日でバイバイする」と笑う死にたがりの友人。歪なふたりが、互いの不器用な体温を頼りに、もう一日だけこの世界を生き延びる、静かな夜の中華料理店でのひととき。</div>
+      <span class="work-link">読む →</span>
+    </a>
+  </div>
+
+  <p class="subgroup-label">公募応募中</p>
+  <div class="works-grid">
+    <a class="work-card" href="https://monogatary.com/story/549459" target="_blank" rel="noopener">
+      <div class="work-num">No.01</div>
+      <span class="work-status">応募中</span>
+      <div class="work-genre">コメディー・お笑い</div>
+      <div class="work-title">コペルニカン・フリップ・ナイト</div>
+      <div class="work-meta">第4回GO-mono短編文学賞</div>
+      <div class="work-desc">お悩み相談コーナーのゲストに選ばれ、ステージに引き上げられた売れない画家志望の青年。司会者のミス・モーブに促されて自分の絵を披露するが、客席からは容赦ないヤジが飛ぶ。夢と現実の狭間で揺らぐ等身大の葛藤と、予測不能なステージの行方を描いたショートストーリー。</div>
+      <span class="work-link">読む →</span>
+    </a>
+    <a class="work-card" href="https://monogatary.com/story/549478" target="_blank" rel="noopener">
+      <div class="work-num">No.02</div>
+      <span class="work-status">応募中</span>
+      <div class="work-genre">ヒューマンドラマ・日常系</div>
+      <div class="work-title">モーニング・オーバー</div>
+      <div class="work-meta">第4回GO-mono短編文学賞</div>
+      <div class="work-desc">不運な絵画の修復と発掘を続ける女性画商のエラは、あるオークションで手に入れたオランダの静物画に不自然な加筆の痕跡を見つける。真実を確かめるため、スタッフと共に専門機関での調査や洗浄を進めていくと、絵画の奥底から驚くべき秘密が浮かび上がってくる。歴史に埋もれた画家たちの過去と、絵に秘められた謎をめぐる物語。</div>
+      <span class="work-link">読む →</span>
+    </a>
+    <a class="work-card" href="https://novelup.plus/story/735305367/841193844" target="_blank" rel="noopener">
+      <div class="work-num">No.03</div>
+      <span class="work-status">応募中</span>
+      <div class="work-genre">ヒューマンドラマ・日常系</div>
+      <div class="work-title">憧れのトーキョー・ルームツアー</div>
+      <div class="work-meta">5分後書籍コン応募作品</div>
+      <div class="work-desc">家賃の値上がりに絶望していた上京したての青年は、駅前の大豪邸が「光熱費込み1万円」で入居者を募集している怪しげなチラシを見つける。半信半疑ながらも好奇心に駆られて内見に訪れた彼は、一風変わった偏屈な老人に出迎えられ、広大な屋敷の内部を案内されることになった。しかし、やがてこの建物が隠す、あまりにも奇事怪異な秘密の核心へと足を踏み入れていく。</div>
+      <span class="work-link">読む →</span>
+    </a>
+  </div>
+</section>
+
+<!-- 批評・Art -->
+<section class="section" id="criticism" aria-labelledby="criticism-heading">
+  <div class="section-label">
+    <span class="section-num" aria-hidden="true">03</span>
+    <h2 class="section-title" id="criticism-heading">批評・Art &amp; other</h2>
+  </div>
+  <div class="works-grid">
+    <a class="work-card" href="https://note.com/morozumi_senka/n/n1a16c6b0e1b9" target="_blank" rel="noopener">
+      <div class="work-num">No.01</div>
+      <div class="work-genre">批評・考察</div>
+      <div class="work-title">夜のカフェテラスを見ているのは誰なのか</div>
+      <div class="work-desc"></div>
+      <span class="work-link">Note で読む →</span>
+    </a>
+  </div>
+</section>
+
+<!-- AWARD -->
+<section class="section" id="award" aria-labelledby="award-heading">
+  <div class="section-label">
+    <span class="section-num" aria-hidden="true">04</span>
+    <h2 class="section-title" id="award-heading">受賞作</h2>
   </div>
   <div class="award-inner">
     <div class="award-contest">monogatary.com — 2025</div>
@@ -243,74 +355,24 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
   </div>
 </section>
 
-<!-- 小説 -->
-<section class="section" id="novels">
-  <div class="section-label">
-    <span class="section-num">03</span>
-    <span class="section-title">小説</span>
-  </div>
-  <div class="works-grid">
-    <a class="work-card" href="https://monogatary.com/story/531266" target="_blank" rel="noopener">
-      <div class="work-num">No.01</div>
-      <div class="work-genre">文芸・日常系</div>
-      <div class="work-title">オルター・エゴ</div>
-      <div class="work-meta">読了目安 10分</div>
-      <div class="work-desc">深夜零時四十七分。熱々の小籠包と、「今日でバイバイする」と笑う死にたがりの友人。歪なふたりが、互いの不器用な体温を頼りに、もう一日だけこの世界を生き延びる、静かな夜の中華料理店でのひととき。</div>
-      <span class="work-link">読む →</span>
-    </a>
-    <a class="work-card" href="https://note.com/morozumi_senka/n/n292b906c0e67" target="_blank" rel="noopener">
-      <div class="work-num">No.02</div>
-      <div class="work-genre">文芸・ラブストーリー</div>
-      <div class="work-title">流蛍の街</div>
-      <div class="work-meta">読了目安 10分</div>
-      <div class="work-desc">「遠くから見る俺は綺麗だった？」――東京の夜景を形作る無数の光は、都会で身を焦がして働く恋人の命の灯りだった。すれ違いの末に別れたあの日から数年。ゆりかもめの車窓から同じ景色を見つめる私は、決して消せなかった想いとともに、宛てのない返信を夜へ放つ。</div>
-      <span class="work-link">Note で読む →</span>
-    </a>
-    <a class="work-card" href="https://note.com/morozumi_senka/n/ne98dada2e2ef" target="_blank" rel="noopener">
-      <div class="work-num">No.03</div>
-      <div class="work-genre">文芸・日常系</div>
-      <div class="work-title">shades</div>
-      <div class="work-meta">読了目安 10分</div>
-      <div class="work-desc">優しい恋人の大切な調度品を壊してしまった日。許されるための罰を乞う私に、彼が囁いた静かなお仕置き。日常の小さな失敗をきっかけに、二人の関係性が静かに狂いはじめる瞬間を描いた静謐なショートストーリー。</div>
-      <span class="work-link">Note で読む →</span>
-    </a>
-  </div>
-</section>
-
-<!-- 批評・Art -->
-<section class="section" id="criticism">
-  <div class="section-label">
-    <span class="section-num">04</span>
-    <span class="section-title">批評・Art &amp; other</span>
-  </div>
-  <div class="works-grid">
-    <a class="work-card" href="https://note.com/morozumi_senka/n/n1a16c6b0e1b9" target="_blank" rel="noopener">
-      <div class="work-num">No.01</div>
-      <div class="work-genre">批評・考察</div>
-      <div class="work-title">夜のカフェテラスを見ているのは誰なのか</div>
-      <div class="work-desc"></div>
-      <span class="work-link">Note で読む →</span>
-    </a>
-  </div>
-</section>
-
 <!-- STORE -->
-<section class="section" id="store">
+<section class="section" id="store" aria-labelledby="store-heading">
   <div class="section-label">
-    <span class="section-num">05</span>
-    <span class="section-title">Store</span>
+    <span class="section-num" aria-hidden="true">05</span>
+    <h2 class="section-title" id="store-heading">Store</h2>
   </div>
   <div class="store-inner">
-    <div class="store-emblem"><span class="store-emblem-text">Store</span></div>
+    <div class="store-emblem" aria-hidden="true"><span class="store-emblem-text">Store</span></div>
     <div class="store-coming">Coming Soon</div>
-    <p class="store-desc">自主出版・限定版・グッズ等の<br>頒布を予定しています<br><br>開設をお待ちください</p>
+    <p class="store-desc">開設をお待ちください</p>
     <div class="store-platforms">
       <div class="store-plat">Kindle Direct</div>
       <div class="store-plat">Note Store</div>
-      <div class="store-plat">BOOTH（検討中）</div>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="footer-name">諸墨 閃果</div>
@@ -319,13 +381,17 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
 
 <script>
 function toggleMenu(){
-  document.getElementById('nav-menu').classList.toggle('open');
-  document.getElementById('hamburger').classList.toggle('open');
-  document.body.style.overflow=document.getElementById('nav-menu').classList.contains('open')?'hidden':'';
+  const menu=document.getElementById('nav-menu');
+  const btn=document.getElementById('hamburger');
+  const isOpen=menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.style.overflow=isOpen?'hidden':'';
 }
 function closeMenu(){
   document.getElementById('nav-menu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('hamburger').setAttribute('aria-expanded','false');
   document.body.style.overflow='';
 }
 </script>
