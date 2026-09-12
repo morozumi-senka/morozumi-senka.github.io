@@ -114,8 +114,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 
 /* WORKS GRID */
 .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.12);max-width:960px;margin:0 auto}
-.work-card{background:var(--void);padding:2.2rem 1.8rem;transition:background .3s;text-decoration:none;display:flex;flex-direction:column}
+.work-card{background:var(--void);padding:0;transition:background .3s;text-decoration:none;display:flex;flex-direction:column}
 .work-card:hover{background:rgba(201,168,76,.04)}
+.work-thumb{position:relative;height:140px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(to bottom,rgba(201,168,76,.04),transparent 70%);border-bottom:1px solid rgba(201,168,76,.12)}
+.thumb-motif{width:100%;height:100%;color:var(--gold);filter:hue-rotate(var(--thumb-hue,0deg));opacity:.55;transition:opacity .3s}
+.work-card:hover .thumb-motif{opacity:.85}
+.work-card:nth-child(2n) .thumb-motif{transform:scaleX(-1)}
+.work-card-body{padding:1.8rem 1.8rem 2.2rem;display:flex;flex-direction:column;flex:1}
 .work-num{font-family:var(--serif-en);font-style:italic;font-size:.85rem;letter-spacing:.25em;color:var(--gold);margin-bottom:1rem}
 .work-genre{font-size:.78rem;letter-spacing:.18em;color:var(--rose);margin-bottom:.5rem}
 .work-title{font-size:1.05rem;font-weight:500;letter-spacing:.2em;color:var(--text);margin-bottom:.8rem;line-height:1.6}
@@ -180,6 +185,28 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="thumb-motif" viewBox="0 0 400 170">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+      <path d="M20 165 A180 180 0 0 1 380 165"/>
+      <line x1="200" y1="168" x2="70" y2="35"/>
+      <line x1="200" y1="168" x2="100" y2="24"/>
+      <line x1="200" y1="168" x2="132" y2="14"/>
+      <line x1="200" y1="168" x2="166" y2="8"/>
+      <line x1="200" y1="168" x2="200" y2="4"/>
+      <line x1="200" y1="168" x2="234" y2="8"/>
+      <line x1="200" y1="168" x2="268" y2="14"/>
+      <line x1="200" y1="168" x2="300" y2="24"/>
+      <line x1="200" y1="168" x2="330" y2="35"/>
+      <line x1="200" y1="168" x2="45" y2="65"/>
+      <line x1="200" y1="168" x2="355" y2="65"/>
+      <circle cx="90" cy="42" r="3" fill="currentColor" stroke="none"/>
+      <circle cx="310" cy="42" r="2" fill="currentColor" stroke="none"/>
+      <circle cx="200" cy="55" r="2" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+</svg>
 
 <a href="#main" class="skip-link">本文へスキップ</a>
 
@@ -276,6 +303,8 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
   <p class="subgroup-label">完結</p>
   <div class="works-grid">
     <a class="work-card" href="https://monogatary.com/story/531266" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:0deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
       <div class="work-num">No.01</div>
       <span class="work-status">完結</span>
       <div class="work-genre">文芸・日常系</div>
@@ -283,12 +312,15 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <div class="work-meta">読了目安 10分</div>
       <div class="work-desc">深夜零時四十七分。熱々の小籠包と、「今日でバイバイする」と笑う死にたがりの友人。歪なふたりが、互いの不器用な体温を頼りに、もう一日だけこの世界を生き延びる、静かな夜の中華料理店でのひととき。</div>
       <span class="work-link">読む →</span>
+      </div>
     </a>
   </div>
 
   <p class="subgroup-label">公募応募中</p>
   <div class="works-grid">
     <a class="work-card" href="https://monogatary.com/story/549459" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:28deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
       <div class="work-num">No.01</div>
       <span class="work-status">応募中</span>
       <div class="work-genre">コメディー・お笑い</div>
@@ -296,8 +328,11 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <div class="work-meta">第4回GO-mono短編文学賞</div>
       <div class="work-desc">お悩み相談コーナーのゲストに選ばれ、ステージに引き上げられた売れない画家志望の青年。司会者のミス・モーブに促されて自分の絵を披露するが、客席からは容赦ないヤジが飛ぶ。夢と現実の狭間で揺らぐ等身大の葛藤と、予測不能なステージの行方を描いたショートストーリー。</div>
       <span class="work-link">読む →</span>
+      </div>
     </a>
     <a class="work-card" href="https://monogatary.com/story/549478" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:-22deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
       <div class="work-num">No.02</div>
       <span class="work-status">応募中</span>
       <div class="work-genre">ヒューマンドラマ・日常系</div>
@@ -305,8 +340,11 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <div class="work-meta">第4回GO-mono短編文学賞</div>
       <div class="work-desc">不運な絵画の修復と発掘を続ける女性画商のエラは、あるオークションで手に入れたオランダの静物画に不自然な加筆の痕跡を見つける。真実を確かめるため、スタッフと共に専門機関での調査や洗浄を進めていくと、絵画の奥底から驚くべき秘密が浮かび上がってくる。歴史に埋もれた画家たちの過去と、絵に秘められた謎をめぐる物語。</div>
       <span class="work-link">読む →</span>
+      </div>
     </a>
     <a class="work-card" href="https://novelup.plus/story/735305367/841193844" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:-40deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
       <div class="work-num">No.03</div>
       <span class="work-status">応募中</span>
       <div class="work-genre">ヒューマンドラマ・日常系</div>
@@ -314,6 +352,7 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <div class="work-meta">5分後書籍コン応募作品</div>
       <div class="work-desc">家賃の値上がりに絶望していた上京したての青年は、駅前の大豪邸が「光熱費込み1万円」で入居者を募集している怪しげなチラシを見つける。半信半疑ながらも好奇心に駆られて内見に訪れた彼は、一風変わった偏屈な老人に出迎えられ、広大な屋敷の内部を案内されることになった。しかし、やがてこの建物が隠す、あまりにも奇事怪異な秘密の核心へと足を踏み入れていく。</div>
       <span class="work-link">読む →</span>
+      </div>
     </a>
   </div>
 </section>
@@ -326,11 +365,14 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
   </div>
   <div class="works-grid">
     <a class="work-card" href="https://note.com/morozumi_senka/n/n1a16c6b0e1b9" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:150deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
       <div class="work-num">No.01</div>
       <div class="work-genre">批評・考察</div>
       <div class="work-title">夜のカフェテラスを見ているのは誰なのか</div>
       <div class="work-desc"></div>
       <span class="work-link">Note で読む →</span>
+      </div>
     </a>
   </div>
 </section>
