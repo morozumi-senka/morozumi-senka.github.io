@@ -107,7 +107,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .profile-grid{display:grid;grid-template-columns:200px 1fr;gap:5rem;align-items:start;max-width:860px;margin:0 auto}
 .profile-portrait{aspect-ratio:3/4;background:var(--void);border:1px solid rgba(201,168,76,.2);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .profile-portrait img{width:100%;height:100%;object-fit:contain;padding:1.6rem}
-.profile-body h2{font-family:var(--serif-jp);font-weight:400;font-size:1.4rem;letter-spacing:.4em;color:var(--text);margin-bottom:.25rem}
+.profile-body h3{font-family:var(--serif-jp);font-weight:400;font-size:1.4rem;letter-spacing:.4em;color:var(--text);margin-bottom:.25rem}
 .profile-furigana{font-size:.75rem;letter-spacing:.45em;color:var(--muted-light);display:block;margin-bottom:1.6rem}
 .profile-divider{height:1px;background:rgba(201,168,76,.2);margin-bottom:1.8rem}
 .profile-body p{font-size:1rem;line-height:2.2;color:var(--muted);margin-bottom:1.2rem}
@@ -118,6 +118,17 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .profile-contact{margin-top:1.6rem;display:flex;flex-direction:column;gap:.5rem}
 .profile-contact a{font-size:.9rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;transition:color .3s;padding:.3rem 0}
 .profile-contact a:hover{color:var(--gold)}
+
+.profile-lead{font-size:1.2rem!important;letter-spacing:.3em;color:var(--text)!important;margin-bottom:1rem!important}
+.profile-sample{font-size:.95rem!important}
+.profile-sample a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.4);transition:color .3s}
+.profile-sample a:hover{color:var(--gold-pale)}
+.profile-sample .sample-meta{color:var(--muted-light);font-size:.85rem}
+.profile-note{margin-top:1.6rem;font-size:.9rem!important;color:var(--muted-light)!important;letter-spacing:.06em}
+.work-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.9rem}
+.work-badges .work-status{margin-bottom:0}
+.work-length{display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;letter-spacing:.15em;color:var(--gold-pale);background:rgba(201,168,76,.14);padding:.2rem .7rem}
+.work-length .len-mark{font-size:.75rem;color:var(--gold)}
 
 /* AWARD */
 .award-inner{max-width:740px;margin:0 auto}
@@ -132,8 +143,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .award-badge:hover{color:var(--gold-pale);border-color:rgba(201,168,76,.6)}
 
 /* WORKS GRID */
-.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.12);max-width:960px;margin:0 auto}
-.work-card{background:var(--void);padding:0;transition:background .3s;text-decoration:none;display:flex;flex-direction:column}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(201,168,76,.12);max-width:960px;margin:0 auto}
+.work-card{background:var(--void);padding:0;transition:background .3s;text-decoration:none;display:flex;flex-direction:column;box-shadow:1px 0 0 rgba(201,168,76,.12),0 1px 0 rgba(201,168,76,.12)}
 .work-card:hover{background:rgba(201,168,76,.04)}
 .work-thumb{position:relative;height:140px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(to bottom,rgba(201,168,76,.04),transparent 70%);border-bottom:1px solid rgba(201,168,76,.12)}
 .thumb-motif{width:100%;height:100%;color:var(--gold);filter:hue-rotate(var(--thumb-hue,0deg));opacity:.55;transition:opacity .3s}
@@ -296,19 +307,20 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <h3>諸墨 閃果</h3>
       <span class="profile-furigana">もろずみ　せんか</span>
       <div class="profile-divider"></div>
-      <p>道端のビニール袋に、猫と名付けて追い回す。<br>
-      時々我に返って、その一部始終を、文章にしている。<br>
-      概ねそのような作風で活動している。</p>
+      <p class="profile-lead">一閃、果てしなく。</p>
+      <p>例えば道端のビニール袋に、猫と名付けて追い回す間に生まれるもの。<br>
+      掌編〜中編を中心に、長編小説も書いています。</p>
+      <p class="profile-sample">お試し読み → <a href="https://monogatary.com/story/524518" target="_blank" rel="noopener">焉熟—えんじゅく—</a> <span class="sample-meta">（読了目安10分）</span></p>
       <ul class="profile-list">
-        <li><span class="profile-key">活動媒体</span><span class="profile-val">カクヨム / Note / Kindle / other</span></li>
-        <li><span class="profile-key">ジャンル</span><span class="profile-val">小説・批評・Art・other</span></li>
+        <li><span class="profile-key">ジャンル</span><span class="profile-val">日常系 / ヒューマンドラマ / コメディー / 青春群像劇 / 恋愛 / 批評</span></li>
+        <li><span class="profile-key">コンタクト</span><span class="profile-val">下記よりどうぞ</span></li>
       </ul>
       <div class="profile-contact">
         <a href="mailto:morozumi.senka@gmail.com">✉ morozumi.senka@gmail.com</a>
         <a href="https://x.com/MorozumiSenka" target="_blank" rel="noopener">X → @MorozumiSenka</a>
         <a href="https://bsky.app/profile/morozumi-senka.bsky.social" target="_blank" rel="noopener">Bluesky → morozumi-senka.bsky.social</a>
-        <a href="https://www.instagram.com/morozumi.senka/" target="_blank" rel="noopener">Instagram → morozumi.senka</a>
       </div>
+      <p class="profile-note">連載・執筆・音声化・朗読のご相談もお気軽に。</p>
     </div>
   </div>
 </section>
@@ -325,7 +337,7 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:0deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
       <div class="work-num">No.01</div>
-      <span class="work-status">完結</span>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◇</span>掌編</span></div>
       <div class="work-genre">文芸・日常系</div>
       <div class="work-title">オルター・エゴ</div>
       <div class="work-meta">読了目安 10分</div>
@@ -333,30 +345,22 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <span class="work-link">読む →</span>
       </div>
     </a>
-  </div>
-
-  <p class="subgroup-label">連載中</p>
-  <div class="works-grid">
     <a class="work-card" href="https://kakuyomu.jp/works/11054822662184437084" target="_blank" rel="noopener">
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:190deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
-      <div class="work-num">No.01</div>
-      <span class="work-status">連載中</span>
-      <div class="work-genre">現代ファンタジー・ヒューマンドラマ</div>
+      <div class="work-num">No.02</div>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◆</span>中編</span></div>
+      <div class="work-genre">現代ドラマ・恋愛</div>
       <div class="work-title">夏雷</div>
       <div class="work-desc">毎年、一人の女性のもとへ姿を変えて訪れる不思議な夏の化身たち。今年現れたのは、彼女が七年前に封じ込めた記憶を呼び起こす七歳の男の子だった。永遠には続かないと知りながら共に過ごす、騒がしくも愛おしいひと夏の記録。</div>
       <span class="work-link">カクヨムで読む →</span>
       </div>
     </a>
-  </div>
-
-  <p class="subgroup-label">公募応募中</p>
-  <div class="works-grid">
     <a class="work-card" href="https://monogatary.com/story/549459" target="_blank" rel="noopener">
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:28deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
-      <div class="work-num">No.01</div>
-      <span class="work-status">応募中</span>
+      <div class="work-num">No.03</div>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◇</span>掌編</span></div>
       <div class="work-genre">コメディー・お笑い</div>
       <div class="work-title">コペルニカン・フリップ・ナイト</div>
       <div class="work-meta">第4回GO-mono短編文学賞</div>
@@ -367,8 +371,8 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
     <a class="work-card" href="https://monogatary.com/story/549478" target="_blank" rel="noopener">
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:-22deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
-      <div class="work-num">No.02</div>
-      <span class="work-status">応募中</span>
+      <div class="work-num">No.04</div>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◇</span>掌編</span></div>
       <div class="work-genre">ヒューマンドラマ・日常系</div>
       <div class="work-title">モーニング・オーバー</div>
       <div class="work-meta">第4回GO-mono短編文学賞</div>
@@ -376,11 +380,37 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
       <span class="work-link">読む →</span>
       </div>
     </a>
+    <a class="work-card" href="https://t.co/KpN9gjJOsI" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:225deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
+      <div class="work-num">No.05</div>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◇</span>掌編</span></div>
+      <div class="work-genre">ヒューマンドラマ</div>
+      <div class="work-title">月のエチュード</div>
+      <div class="work-desc">渡せないものを、渡さないということ。<br>届かない距離のまま完結する、ひとつの関係の物語。</div>
+      <span class="work-link">読む →</span>
+      </div>
+    </a>
+    <a class="work-card" href="https://t.co/cVyXeRRCAw" target="_blank" rel="noopener">
+      <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:-55deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
+      <div class="work-card-body">
+      <div class="work-num">No.06</div>
+      <div class="work-badges"><span class="work-status">完結</span><span class="work-length"><span class="len-mark" aria-hidden="true">◇</span>掌編</span></div>
+      <div class="work-genre">ヒューマンドラマ・恋愛</div>
+      <div class="work-title">45度のミネストローネ</div>
+      <div class="work-desc">殺人鬼だと聞かされた女は、なぜか朝食を作って笑っていた。<br>スープがぬるくなるまでのあいだに明かされる、ふたりの秘密。</div>
+      <span class="work-link">読む →</span>
+      </div>
+    </a>
+  </div>
+
+  <p class="subgroup-label">公募応募中</p>
+  <div class="works-grid">
     <a class="work-card" href="https://novelup.plus/story/735305367/841193844" target="_blank" rel="noopener">
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:-40deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
-      <div class="work-num">No.03</div>
-      <span class="work-status">応募中</span>
+      <div class="work-num">No.01</div>
+      <div class="work-badges"><span class="work-status">応募中</span></div>
       <div class="work-genre">ヒューマンドラマ・日常系</div>
       <div class="work-title">憧れのトーキョー・ルームツアー</div>
       <div class="work-meta">5分後書籍コン応募作品</div>
@@ -391,8 +421,8 @@ footer{border-top:1px solid rgba(201,168,76,.1);padding:2.8rem 2.5rem;text-align
     <a class="work-card" href="https://monogatary.com/story/555148" target="_blank" rel="noopener">
       <div class="work-thumb" aria-hidden="true"><svg class="thumb-motif" style="--thumb-hue:75deg" viewBox="0 0 400 170"><use href="#thumb-motif"></use></svg></div>
       <div class="work-card-body">
-      <div class="work-num">No.04</div>
-      <span class="work-status">応募中</span>
+      <div class="work-num">No.02</div>
+      <div class="work-badges"><span class="work-status">応募中</span><span class="work-length"><span class="len-mark" aria-hidden="true">◈</span>短編</span></div>
       <div class="work-genre">青春群像劇</div>
       <div class="work-title">オンリー・ユアーズ・インクルージョン</div>
       <div class="work-desc">転校生、中野澪央が編入し三ヶ月。クラスは空中分解の危機を迎えていた。とある噂話を発端に、事態は波乱の展開を迎える。複雑に絡み合う人間関係、それぞれの心に落ちる影。揺れ惑う恋心、譲れない思いは、宝石の成長過程で取り込まれた異物や内包物（インクルージョン）のように、ただ一つの個性として物語の輪郭を形づくっていく。瀬戸内の海で巻き起こる、長く短い青春の物語。</div>
