@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://morozumi-senka.github.io/sitemap.xml
